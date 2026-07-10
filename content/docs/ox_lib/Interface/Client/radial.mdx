@@ -120,6 +120,29 @@ Registers a radial sub menu with predefined options.
     - onSelect?: `function(currentMenu: string | nil, itemIndex: number)` | `string`
       - Function that's ran when a user clicks the item.
 
+## lib.showRadialMenu
+
+Opens a registered radial menu as the root radial menu.
+
+<Tabs items={["Lua", "JS"]}>
+  <Tab>
+    ```lua 
+    lib.showRadialMenu(id)
+    ```
+  </Tab>
+  <Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client';
+    
+    lib.showRadialMenu(id);
+    ```
+
+  </Tab> 
+</Tabs>
+
+- id: string
+  - Unique menu id from registered radial menus.
+
 ## lib.hideRadial
 
 Hides the radial menu if one is open.
@@ -268,6 +291,15 @@ Here's a use case example with some global options and an option utilising the l
     function point:onExit()
       lib.removeRadialItem('garage_access')
     end
+
+    lib.addKeybind({
+      name = 'urrp_radialmenu_config_demo',
+      description = 'Open Police menu',
+      defaultKey = 'F6',
+      onPressed = function()
+          lib.showRadialMenu('police_menu')
+      end,
+    })
     ```
 
   </Tab>
